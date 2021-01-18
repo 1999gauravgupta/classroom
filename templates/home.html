@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+	<div class="container">
+		<div style="height: 100%;" class="row">
+			<div class="col-md-6">
+				<a href="{% url 'student_home' %}"><img style="max-width: 100%;max-height: 100%;" src="https://w7.pngwing.com/pngs/41/862/png-transparent-student-higher-education-study-skills-learning-products-people-logo-teacher.png"></a>
+			</div>
+			<div class="col-md-6">
+				<a href="{% url 'teacher_home' %}"><img style="max-width: 100%;max-height: 100%;" src="https://w7.pngwing.com/pngs/41/862/png-transparent-student-higher-education-study-skills-learning-products-people-logo-teacher.png"></a>
+			</div>
+		</div>
+	</div>
+{% endblock %}

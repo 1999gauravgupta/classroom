@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+	<a href="{% url 'create_submission' %}">Create Submission</a>
+	{% for submission in object %}
+		{% if submission.student.username==user.get_username %}
+			{{submission.assignment.teacher}}-{{submission.assignment.name}}
+		{% endif %}
+	{% endfor %}
+{% endblock %}
