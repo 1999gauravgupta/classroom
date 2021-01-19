@@ -6,5 +6,5 @@ urlpatterns = [
     path('create',create_assignment,name="create_assignment"),
     path('assignment/delete/<id>',delete_assignment,name="delete_assignment"),
     path('assignment/report/<id>',report_assignment,name="report_assignment"),
-    path('logout',teacher_logout),
+    path('logout',teacher_logout,name="teacher_logout"),
 ]

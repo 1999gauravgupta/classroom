@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'core',
     'social_django',
     'student',
+    'crispy_forms',
     'django_cleanup.apps.CleanupConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -138,3 +139,5 @@ AUTHENTICATION_BACKENDS = (
 
 SOCIAL_AUTH_GITHUB_KEY = 'd21f8c1a33d01917bd2c'
 SOCIAL_AUTH_GITHUB_SECRET = 'cb82a953cbba356fb363df0241c554dee4d9dfaf'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

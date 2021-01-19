@@ -1,5 +1,14 @@
-{% extends 'base.html' %}
-
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
 {% block content %}
-  <h2>delete assignment</h2>
-{% endblock %}
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <fieldset class="form-group">
+        <legend class="border-bottom mb-4">Are you sure?</legend>
+    </fieldset>
+    <div class="form-group">
+        <button class="btn btn-primary danger" type="submit">Yes</button>
+        <a class="btn btn-secondary" href="{% url 'teacher_home'%}">No</a>
+    </div>
+</form>
+{% endblock content %}

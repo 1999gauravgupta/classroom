@@ -1,6 +1,7 @@
 from django.db import models
 from teacher.models import Assignment
 from django.contrib.auth.models import User
+import os
 # Create your models here.
 
 def get_username(self):
@@ -19,3 +20,6 @@ class Submission(models.Model):
 
     def __str__(self):
         return f'{self.student.username}-{self.assignment.subject}-{self.assignment.name}'
+
+    def filename(self):
+        return os.path.basename(self.file.name)

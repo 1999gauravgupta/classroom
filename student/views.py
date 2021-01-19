@@ -1,34 +1,26 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib import messages
-from .forms import UserRegisterForm
+from .forms import UserRegisterForm,SubmissionForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.views.generic import (
-    ListView,
-    DetailView,
-    CreateView,
-    UpdateView,
-    DeleteView
-)
 from .models import Submission
+# from django.core.urlresolvers import reverse
 
-
-class SubmissionListView(LoginRequiredMixin,ListView):
-    model=Submission
-    template_name = 'student_home.html'
 
 @login_required
 def student_home(request):
-    return render(request,'student_home.html')
+    submissions=Submission.objects.filter(student=request.user)
+    return render(request,'student_home.html',{'submissions':submissions})
 
 def register_student(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
         if form.is_valid():
+            username=form.cleaned_data.get('username')
             user = form.save(commit=False)
             user.backend = "django.contrib.auth.backends.ModelBackend"
             user.save()
+            messages.success(request,f'Account created for {username}')
             return redirect('student_home')
     else:
         form = UserRegisterForm()
@@ -36,15 +28,42 @@ def register_student(request):
 
 @login_required
 def create_submission(request):
-    return render(request,'create_submission.html')
+    if request.method == 'POST':
+        form = SubmissionForm(request.POST,request.FILES)
+        if form.is_valid():
+            obj = form.save(commit=False)
+            obj.student=request.user
+            obj.save()
+            messages.success(request,'Submission successful')
+            return redirect('student_home')
+    else:
+        form = SubmissionForm()
+    return render(request, 'create_submission.html', {'form': form})
 
 @login_required
 def update_submission(request,id):
-    return render(request,'update_submission.html')
-
+    if request.method == 'POST':
+        obj = get_object_or_404(Submission, id = id) 
+        form = SubmissionForm(request.POST,request.FILES,instance=obj)
+        if form.is_valid():
+            obj = form.save(commit=False)
+            obj.student=request.user
+            obj.save()
+            messages.success(request,'Submission update successful')
+            return redirect('student_home')
+    else:
+        form = SubmissionForm()
+    return render(request, "update_submission.html", {'form': form}) 
+    
 @login_required
 def delete_submission(request,id):
-    return render(request,'delete_submission.html')
+    context ={} 
+    obj = get_object_or_404(Submission, id = id) 
+    if request.method =="POST": 
+        obj.delete() 
+        messages.success(request,'Submission deleted')
+        return redirect('student_home')  
+    return render(request,'delete_submission.html',context)
 
 @login_required
 def report_submission(request,id):

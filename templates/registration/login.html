@@ -1,13 +1,46 @@
-{% block content %}
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <div>
-        <button type="submit">Login</button>
-    </div>
-</form>
-<br>
-<p><strong>-- OR --</strong></p>
-<a href="{% url 'social:begin' 'github' %}">Login with GitHub</a><br>
-<a href="{% url 'register_student' %}">Don't have a account?</a>
-{% endblock %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+        <meta name="robots" content="NONE,NOARCHIVE">
+        <title>Log in | Student&#x27;s Panel</title>
+        {% include 'css_login.html' %}
+    </head>
+    <body">
+        <div class="login_container">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{message.tags}}">{{message}}</div>
+                {% endfor %}
+            {% endif %}
+            <div class="login_header">
+                <div id="login_branding">
+                    <h1 id="site_name">Student&#x27;s Panel</h1>
+                </div>
+            </div>
+            <div class="main">
+                <div class="content">
+                    <div id="content">
+                        <div id="content_main">
+                            <form method="POST">
+                                {% csrf_token %}
+                                {{ form |crispy }}
+                                <div class="submit_row">
+                                    <input id="button" type="submit" value="Log in">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-top pt-3">
+                <small class="text-muted">
+                    Don't Have An Account? <a class="ml-2" href="{% url 'register_student'%}">Register</a><br>
+                    Want To Use Github? <a class="ml-2" href="{% url 'social:begin' 'github' %}">Sign In With Github</a>
+                </small>
+            </div>
+        </div>
+    </body>
+</html>

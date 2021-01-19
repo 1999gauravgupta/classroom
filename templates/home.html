@@ -1,14 +1,9 @@
 {% extends 'base.html' %}
-{% load static %}
 {% block content %}
-	<div class="container">
-		<div style="height: 100%;" class="row">
-			<div class="col-md-6">
-				<a href="{% url 'student_home' %}"><img style="max-width: 100%;max-height: 100%;" src="https://w7.pngwing.com/pngs/41/862/png-transparent-student-higher-education-study-skills-learning-products-people-logo-teacher.png"></a>
-			</div>
-			<div class="col-md-6">
-				<a href="{% url 'teacher_home' %}"><img style="max-width: 100%;max-height: 100%;" src="https://w7.pngwing.com/pngs/41/862/png-transparent-student-higher-education-study-skills-learning-products-people-logo-teacher.png"></a>
-			</div>
+	<div class="row">
+		<div class="col">
+			<a href="{% url 'student_home' %}"><img class="home_img img-fluid img-thumbnail float-start" src="https://img.freepik.com/free-vector/student-with-laptop-studying-online-course_74855-5293.jpg"></a>
+			<a class="pull-right" href="{% url 'teacher_home' %}"><img class="home_img img-fluid img-thumbnail float-end" src="https://img.freepik.com/free-vector/teacher-standing-near-blackboard-holding-stick-isolated-flat-vector-illustration-cartoon-woman-character-near-chalkboard-pointing-alphabet_74855-8600.jpg"></a>
 		</div>
 	</div>
 {% endblock %}
