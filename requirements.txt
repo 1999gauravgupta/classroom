@@ -32,3 +32,4 @@ social-auth-core==4.0.3
 soupsieve==2.1
 sqlparse==0.4.1
 urllib3==1.26.2
+whitenoise==5.2.0
