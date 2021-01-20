@@ -1,0 +1,9 @@
+files/final/testing/test2-test_python2.py=10.0
+files/final/testing/test3-test_python3.py=10.0
+files/final/testing/test1-test_python.py=10.0
+mean=10.0
+median=10.0
+mode=10.0
+minimum=10.0
+maximum=10.0
+total=20

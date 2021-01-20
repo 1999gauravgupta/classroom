@@ -1,6 +1,43 @@
 {% extends 'base.html' %}
-
 {% block content %}
-  <h2>submission_report</h2>
-  <a href="{% url 'student_home' %}">Student Home</a>
+<table class="table table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th>Property</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  {% if flag %}
+    <tbody>
+      <tr>
+        <td>Your Marks</td>
+        <td>{{marks}}</td>
+      </tr>
+      <tr>
+        <td>Total Marks</td>
+        <td>{{total}}</td>
+      </tr>
+      <tr>
+        <td>Maximum Marks</td>
+        <td>{{maximum}}</td>
+      </tr>
+      <tr>
+        <td>Minimum Marks</td>
+        <td>{{minimum}}</td>
+      </tr>
+      <tr>
+        <td>Mean Marks</td>
+        <td>{{mean}}</td>
+      </tr>
+      <tr>
+        <td>Median Marks</td>
+        <td>{{median}}</td>
+      </tr>
+      <tr>
+        <td>Range of Marks</td>
+        <td>{{range}}</td>
+      </tr>
+    </tbody>
+  {% endif %}
+</table>
 {% endblock %}

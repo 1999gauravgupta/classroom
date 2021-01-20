@@ -1,0 +1,12 @@
+files/java/testing/test4-test_java4.java=33.333333333333336
+files/java/testing/test5-test_java5.java=33.333333333333336
+files/java/testing/test1-test_java.java=100.0
+files/java/testing/test3-test_java3.java=25.0
+files/java/testing/test2-test_java2.java=33.333333333333336
+files/java/testing/test6-test_java6.java=100.0
+files/java/testing/test7-test_java7.java=100.0
+mean=60.714285714285715
+median=33.333333333333336
+minimum=25.0
+maximum=100.0
+total=100

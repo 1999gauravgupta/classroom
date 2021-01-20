@@ -32,10 +32,10 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'teacher',
-    'core',
+    'teacher.apps.TeacherConfig',
+    'core.apps.CoreConfig',
     'social_django',
-    'student',
+    'student.apps.StudentConfig',
     'crispy_forms',
     'django_cleanup.apps.CleanupConfig',
     'django.contrib.admin',
