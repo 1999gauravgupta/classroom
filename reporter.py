@@ -157,11 +157,11 @@ def generate_results(language,path,marks):
     for ele in final:
         final[ele]=marks/final[ele]
         arr.append(final[ele])
-    mean="NA"
-    median="NA"
-    mean="NA"
-    maximum="NA"
-    minimum="NA"
+    mean=0
+    median=0
+    mean=0
+    maximum=0
+    minimum=0
     try:
         mean=statistics.mean(arr)
     except Exception:
