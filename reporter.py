@@ -6,7 +6,7 @@ from typing import List, Tuple
 import statistics 
 import mosspy
 from bs4 import BeautifulSoup as bs
-
+import os
 HEADERS = {"User-Agent": "Mozilla/5.0"}
 
 
@@ -147,7 +147,7 @@ def generate_results(language,path,marks):
         extension="py"
     else:
         extension="java"
-    userid = 942197121
+    userid =os.environ['MOSS_USERID']
     moss = check(language, userid)
     moss.addFilesByWildCard(f"{path}*.{extension}")
     moss.submit()
